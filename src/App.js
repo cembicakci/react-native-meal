@@ -1,11 +1,19 @@
 import React from 'react';
-import { SafeAreaView, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Categories from './pages/Categories';
+import CategoryCard from './components/CategoryCard';
+
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <Text>App</Text>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Kategoriler" component={Categories} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 export default App;
