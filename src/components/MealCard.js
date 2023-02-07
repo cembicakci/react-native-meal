@@ -1,15 +1,15 @@
 import React from 'react'
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Image, StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 
-const MealCard = ({ meal }) => {
-
-    console.log(meal)
+const MealCard = ({ meal, onSelect }) => {
 
     return (
-        <View style={styles.container}>
-            <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
-            <Text style={styles.text} numberOfLines={1} ellipsizeMode="tail">{meal.strMeal}</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={onSelect}>
+            <View style={styles.container}>
+                <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
+                <Text style={styles.text} numberOfLines={1} ellipsizeMode="tail">{meal.strMeal}</Text>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 

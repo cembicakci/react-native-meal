@@ -3,13 +3,17 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import MealCard from '../components/MealCard';
 import useFetch from '../hooks/useFetch';
 
-const Meals = ({ route }) => {
+const Meals = ({ route, navigation }) => {
 
     const { strCategory } = route.params;
 
     const { data } = useFetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${strCategory}`);
 
-    const renderMeals = ({ item }) => <MealCard meal={item} />
+    const onSelect = (idMeal) => {
+        navigation.navigate('Detail', { idMeal });
+    }
+
+    const renderMeals = ({ item }) => <MealCard meal={item} onSelect={() => onSelect(item.idMeal)} />
 
     return (
         <View style={styles.container}>
